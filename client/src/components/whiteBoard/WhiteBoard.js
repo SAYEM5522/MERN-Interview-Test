@@ -20,11 +20,35 @@ const WhiteBoard = ({drawingData,id}) => {
   const [circles, setCircles] = useState([]);
   const [rectangles, setRectangles] = useState([]);
   const navigate=useNavigate()
+  const parseDrawingData = (data) => {
+    const lines = [];
+    const circles = [];
+    const rectangles = [];
+
+    data.forEach((shape) => {
+      switch (shape.type) {
+        case 'line':
+          lines.push(shape.data);
+          break;
+        case 'circle':
+          circles.push(shape.data);
+          break;
+        case 'rectangle':
+          rectangles.push(shape.data);
+          break;
+        default:
+          break;
+      }
+    });
+
+    return { lines, circles, rectangles };
+  };
   useEffect(() => {
     if (drawingData) {
-      setLines(drawingData.filter(shape => shape.type === 'line').map(shape => shape.data));
-      setCircles(drawingData.filter(shape => shape.type === 'circle').map(shape => shape.data));
-      setRectangles(drawingData.filter(shape => shape.type === 'rectangle').map(shape => shape.data));
+      const parsedData = parseDrawingData(drawingData);
+      setLines(parsedData.lines);
+      setCircles(parsedData.circles);
+      setRectangles(parsedData.rectangles);
       renderShapes();
     }
   }, [drawingData]);
