@@ -16,7 +16,11 @@ const Drawing = () => {
           </div>
         ):(
           <div>
-          <WhiteBoard id={id} drawingData={drowing?.drowing}/>
+            {
+              drowing&&(
+                <WhiteBoard id={id} drawingData={drowing?.drowing}/>
+              )
+            }
           </div>
         )
       }

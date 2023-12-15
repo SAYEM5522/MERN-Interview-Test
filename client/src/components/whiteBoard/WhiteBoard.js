@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect,useRef, useState } from 'react';
 import axios from "axios"
 import { AiOutlineDelete } from "react-icons/ai";
 import { CiEraser } from "react-icons/ci";
@@ -19,7 +19,6 @@ const WhiteBoard = ({drawingData,id}) => {
   const [lines, setLines] = useState([]);
   const [circles, setCircles] = useState([]);
   const [rectangles, setRectangles] = useState([]);
-
   const navigate=useNavigate()
   useEffect(() => {
     if (drawingData) {
