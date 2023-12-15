@@ -24,7 +24,7 @@ const useData = (path,id) => {
 
   useEffect(() => {
     fetchDrowingData();
-  }, []); // Empty dependency array means this effect runs once after the initial render
+  }, [id]); // Empty dependency array means this effect runs once after the initial render
 
   return { drowing, loading, error };
 };
