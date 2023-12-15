@@ -1,11 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import WhiteBoard from './components/whiteBoard/WhiteBoard'
 
-function App() {
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
+import AllDrawing from './components/view/AllDrawing';
+import Drawing from './components/view/Drawing';
+
+const App = () => {
   return (
-    <div className="App">
+    <div>
+     <Router>
+     <Routes>
+     <Route path="/" element={<AllDrawing/>} />
+     <Route path="/createWhiteboard" element={<WhiteBoard/>} />
+     <Route path="/whiteBoard/:id" element={<Drawing/>} />
+
+     </Routes>
+     </Router>
+     
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
